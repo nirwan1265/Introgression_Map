@@ -10,6 +10,6 @@ library(RTIGER)
 
 ### SETUP
 # Done once
-#setupJulia(JULIA_HOME="/Applications/Julia-1.9.app/Contents/Resources/julia/bin")
+setupJulia(JULIA_HOME="/Applications/Julia-1.9.app/Contents/Resources/julia/bin")
 # Needs to be run everytime we load RTIGER
 sourceJulia()

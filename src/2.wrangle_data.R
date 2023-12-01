@@ -11,7 +11,7 @@ if (!dir.exists(filtered_folder)) {
 tsv_files <- list.files(path = data_folder, pattern = "\\.tsv$", full.names = TRUE)
 
 # Define the valid chromosome names you want to keep
-valid_chromosomes <- paste0("chr", 8:10)
+valid_chromosomes <- paste0("chr", 1:3)
 
 # Loop through each .tsv file, remove header lines, reorder columns, remove the first row, and save as .txt separately
 for (file_path in tsv_files) {
@@ -19,13 +19,13 @@ for (file_path in tsv_files) {
   data <- read.delim(file_path, header = FALSE, sep = "\t", stringsAsFactors = FALSE, row.names = NULL, comment.char = "@")
   
   # Remove header lines (lines starting with "@") from the data frame
-  data <- data[!grepl("^@", data[, 1]), ]
+  #data <- data[!grepl("^@", data[, 1]), ]
   
   # Reorder columns
-  data <- data[, c(1, 2, 5, 3, 6, 4)]
+  #data <- data[, c(1, 2, 5, 3, 6, 4)]
   
   # Remove the first row (which might contain the column names)
-  data <- data[-1, ]
+  #data <- data[-1, ]
   
   # Filter rows to keep only those with valid chromosome names
   data <- data[data[, 1] %in% valid_chromosomes, ]
@@ -42,4 +42,5 @@ for (file_path in tsv_files) {
   # Print a message indicating the file has been processed and saved
   cat(paste("Processed and saved:", save_path), "\n")
 }
+str(data)
 rm(data)
