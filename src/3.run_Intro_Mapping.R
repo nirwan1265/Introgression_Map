@@ -24,11 +24,11 @@ output <- paste0(getwd(),"/result")
 myres2 = RTIGER(expDesign = expDesign,
                outputdir = output,
                seqlengths = chr_len,
-               rigidity = 700,
+               rigidity = 500,
                autotune = FALSE,
                average_coverage = 0.8,
                nstates = 3,
-               crossovers_per_megabase = 1, 
+               crossovers_per_megabase = 100, 
                post.processing = FALSE,
                save.results = TRUE)
 RTIGER::calcCOnumber(myres)
