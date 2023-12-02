@@ -67,3 +67,18 @@ genotype_counts_df$hetero_perc <- (genotype_counts_df$hetero / rowSums(genotype_
 
 # Display the updated data frame
 genotype_counts_df
+
+
+
+# Extract REF and ALT alleles
+ref_alleles <- vcf2@fix[, "REF"]
+alt_alleles <- vcf2@fix[, "ALT"]
+
+# Extract Allele Depth (AD)
+# This part can vary depending on how the AD is stored in your VCF
+# Assuming AD is the first field in the genotype (GT:AD:DP:GQ:PL format)
+ad_info <- extract.gt(vcf2, element = "AD")
+
+# Combine the extracted information into a data frame
+allele_info_df <- data.frame(REF = ref_alleles, ALT = alt_alleles, AD = ad_info)
+allele_info_df[1:5,1:10]
